@@ -1,0 +1,44 @@
+1. Project Understanding and Initial Planning
+
+    Define Project Scope and Requirements: Clearly outline the goals, target audience, and core functionalities of your web application. This will guide the design and development process.
+    Design LLM Input: Prepare a detailed document that encapsulates the project idea, requirements, and any specific design preferences or constraints. This document will be the input for the designer LLM.
+
+2. Design Phase
+
+    Designer LLM Workflow:
+        Input: Project idea and requirements document.
+        Output: A high-level design vision document. This should include wireframes or mockups of the website, color schemes, typography, and a UI component map.
+
+3. Structure Brainstorming
+
+    LLM Collaboration:
+        Input: Design vision, project requirements.
+        Process: Use an LLM to brainstorm the optimal structure based on the design output. This might involve creating a hierarchy of components, deciding on state management strategies, and outlining data flow.
+        Output: A detailed blueprint for each directory, outlining what components, hooks, pages, utilities, assets, context providers, services, and routes are needed.
+
+4. Blueprint Creation
+
+    Detailed Directory Blueprints:
+        For each directory outlined in the brainstorming phase, create a specific blueprint that details:
+            The purpose of each file or component.
+            Dependencies between components or services.
+            Placeholder content for future development (e.g., component structure, hook functionality, service API calls).
+
+5. File and Description Generation
+
+    LLM Detailed Output:
+        Input: Blueprint for each directory.
+        Process: Generate detailed descriptions for each file, including its role, expected inputs and outputs, and any specific logic or state it manages.
+        Output: A comprehensive document that lists all the files, their purpose, and descriptions, serving as a guide for development.
+
+6. Development Strategy
+
+    Iterative Development: With the full structure and file descriptions in hand, proceed with the development in an iterative fashion. Start with core functionalities and build outwards, integrating assets, utilities, and context as needed.
+    Regular Reviews: Incorporate regular code reviews and LLM checks to ensure the development aligns with the initial design vision and project requirements.
+
+7. Suggestions for Efficiency and Cohesion
+
+    Modular Design: Ensure components are reusable and modular. This simplifies future updates and maintenance.
+    State Management: Decide early on a state management solution (Context API, Redux, etc.) that suits your project scale and complexity.
+    Performance Optimization: Plan for performance optimization from the start, considering lazy loading, code splitting, and efficient data fetching strategies.
+    Documentation: Maintain comprehensive documentation throughout the development process. This includes comments in code, as well as external documents that describe the overall architecture and component interactions.

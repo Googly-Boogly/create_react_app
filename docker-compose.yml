@@ -1,0 +1,70 @@
+#####################################################
+# Change to docker-compose.prod.yml and change any variables to your local ones
+# Than run docker-compose up --build in the same directory as this file
+
+version: '3.8'
+
+services:
+#  ollama:
+#    image: ollama/ollama
+#    volumes:
+#      - /home/alex/Documents/Code/Python/swarms/models:/root/.ollama
+#    ports:
+#      - "11435:11434"
+#    networks:
+#      - app-network
+#    deploy:
+#      resources:
+#        reservations:
+#          devices:
+#            - driver: nvidia
+#              capabilities: [gpu]
+#              device_ids: ['0']
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: swarm_db
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+    volumes:
+      - /home/alex/Documents/Code/Python/swarms/src/database/swarm_db_creation_script.sql:/docker-entrypoint-initdb.d/swarm_db_creation_script.sql
+      - db:/var/lib/mysql
+
+
+  swarm:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    environment:
+#      OLLAMA_PORT: "11435"
+      LOCAL_MACHINE_PORT: changeme
+      LOCAL_MACHINE_IP_ADDR: changeme
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: swarm_db
+      PROJECT_CREATION_FOLDER: /home/alex/Documents/Code/ai_projects
+    networks:
+      - app-network
+    volumes:
+      - /home/alex/Documents/Code/Python/swarms/src:/src
+    # Mount the host Docker daemon socket into the container
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/alex/Documents/Code/ai_projects:/container/projects
+      - /home/alex/Documents/Code/AI:/test/
+    user: "1000:1000"
+#    command: /bin/sh -c "while true; do sleep 30; done"
+    depends_on:
+      - mysql
+#      - ollama
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db:

@@ -1,0 +1,11 @@
+.venv
+.env
+docker-compose.prod.yml
+docker-compose.prod.websitebuilder.yml
+.secrets
+.src/secrets
+google_oauth_2_details.json
+src/secrets/token.pickle
+config.yaml
+.models
+.db_volume
